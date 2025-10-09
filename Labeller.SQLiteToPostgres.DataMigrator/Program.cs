@@ -53,7 +53,7 @@ var existingRecords =  await sqliteConnections.QueryAsync<DiscourseTopicDbModel>
 
 var contextFactory = sp.GetRequiredService<IDbContextFactory<CustomDbContext>>();
 using var context = contextFactory.CreateDbContext();
-context.Database.EnsureCreated();
+context.Database.Migrate();
 
 var mapped = existingRecords.Select(x => new DiscourseTopicEntity
 {
